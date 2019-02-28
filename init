@@ -1,0 +1,31 @@
+
+-----------------------------Aircrack-ng-------------------------------------------------------------
+-wireless n/w auditing tool
+prerequisites to intsall on debian based(excluding kali and parrotsec)
+sudo apt-get install build-essential
+sudo apt-get install libssl-dev
+--
+installing aircrackng----
+wget(download stuff)
+wget http://download.aircrack-ng.org/aircrack-ng-1.1.tar.gz
+tar -zxvf aircrack-ng-1.1.tar.gz
+cd aircrack-ng-1.1
+sudo gedit common.mak (can use nano or vim too)
+remove -Werror in the CFLAGS attribute and save
+>make
+>sudo make install
+
+---ifconfig check wlan interface
+---put it in monitor mode
+>ifconfig wlan0 down
+>ifconfig wlan0 mode monitor
+>ifconfig wlan0 up
+--check for processes that may cause interferance
+>airmon-ng check wlan0
+>kill (network manager first, put in PID#)
+>airmon-ng check wlan0
+>kill (dhclient,put in PID#)
+>airmon-ng check wlan0
+>kill (kill the rest one by one even if they keep spawning)
+>airmon-ng check wlan0 (check until empty)
+
